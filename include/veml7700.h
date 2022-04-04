@@ -84,7 +84,7 @@ extern "C" {
  * as 'resolution' and 'maximum lux'.
  * 
  */
-static struct veml7700_config {
+struct veml7700_config {
 	uint16_t gain;				/*!< Sensor gain configuration */
 	uint16_t integration_time;	/*!< Sensor integration time configuration */
 	uint16_t persistance;		/*!< Last result persistance on-sensor configuration */

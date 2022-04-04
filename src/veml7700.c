@@ -93,18 +93,18 @@ static struct veml7700_config veml7700_configuration;
 
 //Forward declarations
 static struct veml7700_config veml7700_get_default_config();
-static esp_err_t veml7700_optimize_configuration(uint32_t *lux);
+static esp_err_t veml7700_optimize_configuration(double *lux);
 static uint32_t veml7700_get_current_maximum_lux();
-static uint32_t veml7700_get_lower_maximum_lux(uint32_t* lux);
+static uint32_t veml7700_get_lower_maximum_lux(double* lux);
 static uint32_t veml7700_get_lowest_maximum_lux();
 static uint32_t veml7700_get_maximum_lux();
 static int veml7700_get_gain_index(uint8_t gain);
 static int veml7700_get_it_index(uint8_t integration_time);
-static uint8_t indexOf(uint8_t elm, uint8_t *ar, uint8_t len);
+static uint8_t indexOf(uint8_t elm, const uint8_t *ar, uint8_t len);
 static void decrease_resolution();
 static void increase_resolution();
-static esp_err_t veml7700_i2c_read(uint8_t *dev_addr, uint8_t reg_addr, uint16_t *reg_data, uint8_t len);
-static esp_err_t veml7700_i2c_write(uint8_t *dev_addr, uint8_t reg_addr, uint16_t *reg_data, uint8_t len);
+static esp_err_t veml7700_i2c_read_reg(const uint8_t dev_addr, uint8_t reg_addr, uint16_t *reg_data);
+static esp_err_t veml7700_i2c_write_reg(const uint8_t dev_addr, uint8_t reg_addr, uint16_t reg_data);
 
 
 /**
@@ -137,7 +137,7 @@ static struct veml7700_config veml7700_get_default_config()
  * 
  * @return esp_err_t 
  */
-static esp_err_t veml7700_optimize_configuration(uint32_t *lux)
+static esp_err_t veml7700_optimize_configuration(double *lux)
 {
 	// Make sure this isn't the smallest maximum
 	if (veml7700_configuration.maximum_lux == veml7700_get_lowest_maximum_lux()) {
@@ -187,7 +187,7 @@ static uint32_t veml7700_get_current_maximum_lux()
  * 
  * @return uint32_t The next smallest maximum lux value.
  */
-static uint32_t veml7700_get_lower_maximum_lux(uint32_t* lux)
+static uint32_t veml7700_get_lower_maximum_lux(double* lux)
 {
 	int gain_index = veml7700_get_gain_index(veml7700_configuration.gain);
 	int it_index = veml7700_get_it_index(veml7700_configuration.integration_time);
@@ -237,7 +237,7 @@ static uint32_t veml7700_get_maximum_lux()
  */
 static int veml7700_get_gain_index(uint8_t gain)
 {
-	return indexOf(gain, &gain_values, VEML7700_GAIN_OPTIONS_COUNT);
+	return indexOf(gain, gain_values, VEML7700_GAIN_OPTIONS_COUNT);
 }
 
 /**
@@ -250,7 +250,7 @@ static int veml7700_get_gain_index(uint8_t gain)
  */
 static int veml7700_get_it_index(uint8_t integration_time)
 {
-	return indexOf(integration_time, &integration_time_values, VEML7700_IT_OPTIONS_COUNT);
+	return indexOf(integration_time, integration_time_values, VEML7700_IT_OPTIONS_COUNT);
 }
 
 /**
@@ -267,7 +267,7 @@ static int veml7700_get_it_index(uint8_t integration_time)
  * 		- n Index within the array
  * 		- -1 Element not found.
  */
-static uint8_t indexOf(uint8_t elm, uint8_t *ar, uint8_t len)
+static uint8_t indexOf(uint8_t elm, const uint8_t *ar, uint8_t len)
 {
     while (len--) { if (ar[len] == elm) { return len; } } return -1;
 }
@@ -352,26 +352,26 @@ static void increase_resolution()
  * 
  * @return esp_err_t 
  */
-static esp_err_t veml7700_i2c_read(uint8_t *dev_addr, uint8_t reg_addr, uint16_t *reg_data, uint8_t len)
+static esp_err_t veml7700_i2c_read_reg(uint8_t dev_addr, uint8_t reg_addr, uint16_t *reg_data)
 {
 	esp_err_t espRc;
 
 	i2c_cmd_handle_t cmd = i2c_cmd_link_create();
 
 	i2c_master_start(cmd);
-	i2c_master_write_byte(cmd, (*dev_addr << 1) | I2C_MASTER_WRITE, true);
+	i2c_master_write_byte(cmd, (dev_addr << 1) | I2C_MASTER_WRITE, true);
 	i2c_master_write_byte(cmd, reg_addr, true);
 
 	i2c_master_start(cmd);
-	i2c_master_write_byte(cmd, (*dev_addr << 1) | I2C_MASTER_READ, true);
-
-	i2c_master_read(cmd, reg_data, len, I2C_MASTER_LAST_NACK);
+	i2c_master_write_byte(cmd, (dev_addr << 1) | I2C_MASTER_READ, true);
+	
+	uint8_t read_data[2];
+	i2c_master_read(cmd, read_data, 2, I2C_MASTER_LAST_NACK);
 	i2c_master_stop(cmd);
-
-	*reg_data = (*reg_data >> 8) | (*reg_data << 8);  // Swap if LSB first
 
 	espRc = i2c_master_cmd_begin(I2C_MASTER_NUM, cmd, 2000 / portTICK_PERIOD_MS);
 
+	*reg_data=read_data[0]|(read_data[1]<<8);
 	i2c_cmd_link_delete(cmd);
 
 	return espRc;
@@ -390,16 +390,19 @@ static esp_err_t veml7700_i2c_read(uint8_t *dev_addr, uint8_t reg_addr, uint16_t
  * 
  * @return esp_err_t 
  */
-static esp_err_t veml7700_i2c_write(uint8_t *dev_addr, uint8_t reg_addr, uint16_t *reg_data, uint8_t len)
+static esp_err_t veml7700_i2c_write_reg(uint8_t dev_addr, uint8_t reg_addr, uint16_t reg_data)
 {
 	esp_err_t espRc;
 	i2c_cmd_handle_t cmd = i2c_cmd_link_create();
 
 	i2c_master_start(cmd);
-	i2c_master_write_byte(cmd, (*dev_addr << 1) | I2C_MASTER_WRITE, false);
+	i2c_master_write_byte(cmd, (dev_addr << 1) | I2C_MASTER_WRITE, false);
 	i2c_master_write_byte(cmd, reg_addr, false);
 
-	i2c_master_write(cmd, reg_data, len, false);
+	uint8_t write_data[2];
+	write_data[0]=reg_data&0xff;
+	write_data[1]=(reg_data>>8)&0xff;
+	i2c_master_write(cmd, write_data, 2, false);
 	
 	i2c_master_stop(cmd);
 
@@ -434,11 +437,10 @@ esp_err_t veml7700_set_config(struct veml7700_config *configuration)
 	// Set the current maximum value on the global configuration struct
 	veml7700_configuration.maximum_lux = veml7700_get_current_maximum_lux();
 
-	return veml7700_i2c_write(
-		&veml7700_device_address, 
+	return veml7700_i2c_write_reg(
+		veml7700_device_address, 
 		VEML7700_ALS_CONFIG, 
-		&config_data,
-		2
+		config_data
 	);
 }
 
@@ -447,7 +449,7 @@ esp_err_t veml7700_read_als_lux(double* lux)
 	esp_err_t i2c_result;
 	uint16_t reg_data;
 	
-	i2c_result = veml7700_i2c_read(&veml7700_device_address, VEML7700_ALS_DATA, &reg_data, 2);
+	i2c_result = veml7700_i2c_read_reg(veml7700_device_address, VEML7700_ALS_DATA, &reg_data);
 	if (i2c_result != 0) {
 		ESP_LOGW(VEML7700_TAG, "veml7700_i2c_read() returned %d", i2c_result);
 		return i2c_result;;
@@ -480,7 +482,7 @@ esp_err_t veml7700_read_white_lux(double* lux)
 	esp_err_t i2c_result;
 	uint16_t reg_data;
 	
-	i2c_result = veml7700_i2c_read(&veml7700_device_address, VEML7700_WHITE_DATA, &reg_data, 2);
+	i2c_result = veml7700_i2c_read_reg(veml7700_device_address, VEML7700_WHITE_DATA, &reg_data);
 	if (i2c_result != 0) {
 		ESP_LOGW(VEML7700_TAG, "veml7700_i2c_read() returned %d", i2c_result);
 		return i2c_result;
