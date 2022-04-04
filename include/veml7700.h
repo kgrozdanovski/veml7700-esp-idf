@@ -59,6 +59,17 @@ typedef struct veml7700_privdata_t *veml7700_handle_t;
  */
 esp_err_t veml7700_initialize(veml7700_handle_t *dev, int i2c_master_num);
 
+
+/**
+ * @brief Release any sensor data, freeing up the memory taken by veml7700_initialize.
+ *
+ * Call after you're done using the sensor, if applicable to your application.
+ *
+ * @param dev Device handle to free
+ */
+void veml7700_release(veml7700_handle_t dev);
+
+
 /**
  * @brief Write the sensor configuration to the device.
  * 

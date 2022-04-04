@@ -487,6 +487,11 @@ esp_err_t veml7700_initialize(veml7700_handle_t *dev, int i2c_master_num)
 	return veml7700_send_config(rdev);
 }
 
+void veml7700_release(veml7700_handle_t dev) {
+	//Nothing special to do with the device; simply free the handle memory.
+	free(dev);
+}
+
 static esp_err_t veml7700_send_config(veml7700_handle_t dev)
 {
 	uint16_t config_data = ( 
