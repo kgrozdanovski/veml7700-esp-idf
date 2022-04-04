@@ -91,6 +91,29 @@ const uint8_t veml7700_device_address = VEML7700_I2C_ADDR;
  */
 static struct veml7700_config veml7700_configuration;
 
+//Forward declarations
+static struct veml7700_config veml7700_get_default_config();
+static esp_err_t veml7700_optimize_configuration(uint32_t *lux);
+static uint32_t veml7700_get_current_maximum_lux();
+static uint32_t veml7700_get_lower_maximum_lux(uint32_t* lux);
+static uint32_t veml7700_get_lowest_maximum_lux();
+static uint32_t veml7700_get_maximum_lux();
+static int veml7700_get_gain_index(uint8_t gain);
+static int veml7700_get_it_index(uint8_t integration_time);
+static uint8_t indexOf(uint8_t elm, uint8_t *ar, uint8_t len);
+static void decrease_resolution();
+static void increase_resolution();
+static esp_err_t veml7700_i2c_read(uint8_t *dev_addr, uint8_t reg_addr, uint16_t *reg_data, uint8_t len);
+static esp_err_t veml7700_i2c_write(uint8_t *dev_addr, uint8_t reg_addr, uint16_t *reg_data, uint8_t len);
+
+
+/**
+ * @brief Get the default sensor configuration.
+ * 
+ * @note Default values implemented are chosen per official recommendation.
+ * 
+ * @return struct veml7700_config 
+ */
 static struct veml7700_config veml7700_get_default_config()
 {
 	struct veml7700_config configuration;
@@ -104,6 +127,16 @@ static struct veml7700_config veml7700_get_default_config()
 	return configuration;
 }
 
+/**
+ * @brief Auto-resolution adjustment algorithm implementation for
+ * VEML7700 light sensor.
+ * 
+ * @note  Does not match official recommended algorithm.
+ * 
+ * @param lux Luminocity value for which we are optimizing.
+ * 
+ * @return esp_err_t 
+ */
 static esp_err_t veml7700_optimize_configuration(uint32_t *lux)
 {
 	// Make sure this isn't the smallest maximum
@@ -131,6 +164,11 @@ static esp_err_t veml7700_optimize_configuration(uint32_t *lux)
 	return ESP_OK;
 }
 
+/**
+ * @brief Read the maximum lux for the currentl configuration.
+ * 
+ * @return uint32_t The maximum lux value.
+ */
 static uint32_t veml7700_get_current_maximum_lux()
 {
 	int gain_index = veml7700_get_gain_index(veml7700_configuration.gain);
@@ -139,6 +177,16 @@ static uint32_t veml7700_get_current_maximum_lux()
 	return maximums_map[it_index][gain_index];
 }
 
+/**
+ * @brief Get the next smallest maximum lux limit value.
+ * 
+ * Used to identify if a better range is possible for the current 
+ * light levels.
+ * 
+ * @param lux The referent lux value, usually the last result.
+ * 
+ * @return uint32_t The next smallest maximum lux value.
+ */
 static uint32_t veml7700_get_lower_maximum_lux(uint32_t* lux)
 {
 	int gain_index = veml7700_get_gain_index(veml7700_configuration.gain);
@@ -158,31 +206,79 @@ static uint32_t veml7700_get_lower_maximum_lux(uint32_t* lux)
 	}
 }
 
+/**
+ * @brief Get the smallest possible maximum lux value for this sensor.
+ * 
+ * @return uint32_t The smallest maximum lux value.
+ */
 static uint32_t veml7700_get_lowest_maximum_lux()
 {
 	return maximums_map[0][0];
 }
 
+/**
+ * @brief The maximum possible lux value for any configuration on this
+ * sensor.
+ * 
+ * @return uint32_t The maximum lux value.
+ */
 static uint32_t veml7700_get_maximum_lux()
 {
 	return maximums_map[VEML7700_IT_OPTIONS_COUNT - 1][VEML7700_GAIN_OPTIONS_COUNT - 1];
 }
 
+/**
+ * @brief Get the index of the gain value within the list of possible
+ * gain values.
+ * 
+ * @param gain The gain value to search for.
+ * 
+ * @return int The index within the array of possible gains.
+ */
 static int veml7700_get_gain_index(uint8_t gain)
 {
 	return indexOf(gain, &gain_values, VEML7700_GAIN_OPTIONS_COUNT);
 }
 
+/**
+ * @brief Get the index of the gain value within the list of possible
+ * integration time values.
+ * 
+ * @param gain The integration time value to search for.
+ * 
+ * @return int The index within the array of possible integration times.
+ */
 static int veml7700_get_it_index(uint8_t integration_time)
 {
 	return indexOf(integration_time, &integration_time_values, VEML7700_IT_OPTIONS_COUNT);
 }
 
+/**
+ * @brief Find the index of a given element within an array.
+ * 
+ * This is a standard implementation of a commonly used function which can be
+ * found online.
+ * 
+ * @param elm		Value of the element we are searching for
+ * @param ar 		The array in which to search
+ * @param len 		Length of the given array
+ * 
+ * @return uint8_t 
+ * 		- n Index within the array
+ * 		- -1 Element not found.
+ */
 static uint8_t indexOf(uint8_t elm, uint8_t *ar, uint8_t len)
 {
     while (len--) { if (ar[len] == elm) { return len; } } return -1;
 }
 
+/**
+ * @brief Decrease either gain and/or integration time in configuration.
+ * 
+ * @note  Does not match official recommended algorithm.
+ * 
+ * @return void 
+ */
 static void decrease_resolution()
 {
 	// Identify the indexes of the currently configured values
@@ -215,6 +311,13 @@ static void decrease_resolution()
 	veml7700_set_config(&veml7700_configuration);
 }
 
+/**
+ * @brief Increase either gain and/or integration time in configuration.
+ * 
+ * @note Does not match official recommended algorithm.
+ * 
+ * @return void 
+ */
 static void increase_resolution()
 {
 	int gain_index = veml7700_get_gain_index(veml7700_configuration.gain);
@@ -236,6 +339,19 @@ static void increase_resolution()
 	veml7700_set_config(&veml7700_configuration);
 }
 
+/**
+ * @brief I2C read protocol implementation for VEML7700 IC.
+ * 
+ * @note Implementation as per official specification by Vishay found
+ * on page 6 of the [VEML7700 Datasheet] (https://www.vishay.com/docs/84286/veml7700.pdf), rev. 1.5
+ * 
+ * @param dev_addr The address of the I2C slave device
+ * @param reg_addr The register address from which to read
+ * @param reg_data The data read from the desired register
+ * @param len Length of data to be read in bytes
+ * 
+ * @return esp_err_t 
+ */
 static esp_err_t veml7700_i2c_read(uint8_t *dev_addr, uint8_t reg_addr, uint16_t *reg_data, uint8_t len)
 {
 	esp_err_t espRc;
@@ -261,6 +377,19 @@ static esp_err_t veml7700_i2c_read(uint8_t *dev_addr, uint8_t reg_addr, uint16_t
 	return espRc;
 }
 
+/**
+ * @brief I2C write protocol implementation for VEML7700 IC.
+ * 
+ * @note Implementation as per official specification by Vishay found
+ * on page 6 of the [VEML7700 Datasheet] (https://www.vishay.com/docs/84286/veml7700.pdf), rev. 1.5
+ * 
+ * @param dev_addr The address of the I2C slave device
+ * @param reg_addr The register address to which to write
+ * @param reg_data The data to be written
+ * @param len Length of data to be written in bytes
+ * 
+ * @return esp_err_t 
+ */
 static esp_err_t veml7700_i2c_write(uint8_t *dev_addr, uint8_t reg_addr, uint16_t *reg_data, uint8_t len)
 {
 	esp_err_t espRc;
@@ -280,6 +409,7 @@ static esp_err_t veml7700_i2c_write(uint8_t *dev_addr, uint8_t reg_addr, uint16_
 
 	return espRc;
 }
+
 
 esp_err_t veml7700_initialize()
 {
