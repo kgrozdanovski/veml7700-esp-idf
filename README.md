@@ -64,3 +64,7 @@ Make sure all your connections to the sensor are secured and the ground of both 
 For debugging the communication with the sensor, a logic analyzer is strongly recommended.
 
 Alternatively, you may flash a tool such as [i2c_tools](https://github.com/espressif/esp-idf/tree/master/examples/peripherals/i2c/i2c_tools) to debug and scan your I2C bus.
+
+## Contributors
+
+Special thanks to [Jeroem Domburg](https://github.com/Spritetm) for his contributions and advice as well as the overall project review.

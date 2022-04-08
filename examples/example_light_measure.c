@@ -5,11 +5,11 @@
  * 
  * @brief Vishay VEML7700 Light Sensor driver for integration with ESP-IDF framework.
  * 
- * @version 1
+ * @version 2
  * 
  * @date 2021-12-11
  * 
- * @copyright Copyright (c) 2021, Kristijan Grozdanovski
+ * @copyright Copyright (c) 2022, Kristijan Grozdanovski
  * All rights reserved.
  * 
  * This source code is licensed under the BSD-style license found in the
@@ -75,8 +75,10 @@ void i2c_master_setup(void)
  */
 void task_veml7700_read(void *ignore)
 { 
-	int8_t init_result = veml7700_initialize();
-	if (init_result != 0) {
+	veml7700_handle_t veml7700_dev;
+
+	esp_err_t init_result = veml7700_initialize(&veml7700_dev, I2C_MASTER_NUM);
+	if (init_result != ESP_OK) {
 		ESP_LOGE("VEML7700", "Failed to initialize. Result: %d\n", init_result);
 		return;
 	}
@@ -87,12 +89,12 @@ void task_veml7700_read(void *ignore)
 		double lux_als, lux_white, fc_als, fc_white;
 
 		// Read the ALS data
-		ESP_ERROR_CHECK( veml7700_read_als_lux_auto(&lux_als) );
+		ESP_ERROR_CHECK( veml7700_read_als_lux_auto(veml7700_dev, &lux_als) );
 		// Convert to foot candles
 		fc_als = lux_als * LUX_FC_COEFFICIENT;
 
 		// Read the White data
-		ESP_ERROR_CHECK( veml7700_read_white_lux_auto(&lux_white) );
+		ESP_ERROR_CHECK( veml7700_read_white_lux_auto(veml7700_dev, &lux_white) );
 		// Convert to foot candles
 		fc_white = lux_white * LUX_FC_COEFFICIENT;
 

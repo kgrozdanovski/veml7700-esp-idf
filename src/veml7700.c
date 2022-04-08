@@ -5,11 +5,11 @@
  * 
  * @brief Vishay VEML7700 Light Sensor driver for integration with ESP-IDF framework.
  * 
- * @version 1
+ * @version 2
  * 
  * @date 2021-12-11
  * 
- * @copyright Copyright (c) 2021, Kristijan Grozdanovski
+ * @copyright Copyright (c) 2022, Kristijan Grozdanovski
  * All rights reserved.
  * 
  * This source code is licensed under the BSD-style license found in the
@@ -62,9 +62,6 @@
 
 #define VEML7700_GAIN_OPTIONS_COUNT 4	/*!< Possible gain values count */
 #define VEML7700_IT_OPTIONS_COUNT 6		/*!< Possible integration time values count */
-
-#define LUX_FC_COEFFICIENT 0.092903     /*!< Multiplier coefficient for lux-fc conversion */
-#define FC_LUX_COEFFICIENT 10.7639      /*!< Multiplier coefficient for fc-lux conversion */
 
 #define ARRAY_SIZE(arr)	(sizeof(arr) / sizeof((arr)[0]))
 
