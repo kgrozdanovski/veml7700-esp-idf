@@ -1,0 +1,1207 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="veml7700_8h" kind="file" language="C++">
+    <compoundname>veml7700.h</compoundname>
+    <includes local="no">stdio.h</includes>
+    <includes local="no">stdlib.h</includes>
+    <includes local="no">stdbool.h</includes>
+    <includes local="no">string.h</includes>
+    <includes local="no">math.h</includes>
+    <includes local="yes">esp_log.h</includes>
+    <includes local="yes">driver/i2c.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>include/veml7700.h</label>
+        <link refid="veml7700_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>driver/i2c.h</label>
+      </node>
+      <node id="7">
+        <label>esp_log.h</label>
+      </node>
+      <node id="6">
+        <label>math.h</label>
+      </node>
+      <node id="4">
+        <label>stdbool.h</label>
+      </node>
+      <node id="2">
+        <label>stdio.h</label>
+      </node>
+      <node id="3">
+        <label>stdlib.h</label>
+      </node>
+      <node id="5">
+        <label>string.h</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="structveml7700__config" prot="public">veml7700_config</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="veml7700_8h_1aab9e642b6200f95fcbd2ad7466aaa2d3" prot="public" static="no">
+        <name>I2C_MASTER_NUM</name>
+        <initializer>I2C_NUM_0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Port number for I2C master </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="34" column="9" bodyfile="include/veml7700.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="veml7700_8h_1aa7ff19f185342932575a429301c14f17" prot="public" static="no">
+        <name>VEML7700_I2C_ADDR</name>
+        <initializer>UINT8_C(0x10)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sensor slave I2C address </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="37" column="9" bodyfile="include/veml7700.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="veml7700_8h_1ad174f7b591b471e18517498892a3620c" prot="public" static="no">
+        <name>VEML7700_ALS_CONFIG</name>
+        <initializer>0x00</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Light configuration register </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="39" column="9" bodyfile="include/veml7700.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="veml7700_8h_1a09c6086c36bdbd61abe4d2902acb8f69" prot="public" static="no">
+        <name>VEML7700_ALS_THREHOLD_HIGH</name>
+        <initializer>0x01</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Light high threshold for irq </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="40" column="9" bodyfile="include/veml7700.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="veml7700_8h_1a2dba95a2e1380568bd74b34b3e3ae6fa" prot="public" static="no">
+        <name>VEML7700_ALS_THREHOLD_LOW</name>
+        <initializer>0x02</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Light low threshold for irq </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="41" column="9" bodyfile="include/veml7700.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="veml7700_8h_1a65e19d018fbbb9bbe7f6009e5be8a14e" prot="public" static="no">
+        <name>VEML7700_ALS_POWER_SAVE</name>
+        <initializer>0x03</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Power save register </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="42" column="9" bodyfile="include/veml7700.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="veml7700_8h_1af23db981b342738481bfb31372857826" prot="public" static="no">
+        <name>VEML7700_ALS_DATA</name>
+        <initializer>0x04</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The light data output </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="43" column="9" bodyfile="include/veml7700.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="veml7700_8h_1aabab10b5708dc515d55e846c30b859c8" prot="public" static="no">
+        <name>VEML7700_WHITE_DATA</name>
+        <initializer>0x05</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The white light data output </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="44" column="9" bodyfile="include/veml7700.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="veml7700_8h_1aecee9475702285f6f3bce591cfc9b880" prot="public" static="no">
+        <name>VEML7700_INTERRUPTSTATUS</name>
+        <initializer>0x06</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>What IRQ (if any) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="45" column="9" bodyfile="include/veml7700.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="veml7700_8h_1a677872f600cd5d6e2741a68ea2d4718c" prot="public" static="no">
+        <name>VEML7700_INTERRUPT_HIGH</name>
+        <initializer>0x4000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Interrupt status for high threshold </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="47" column="9" bodyfile="include/veml7700.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="veml7700_8h_1aed79b7101d08af406f75a4c19f7d806a" prot="public" static="no">
+        <name>VEML7700_INTERRUPT_LOW</name>
+        <initializer>0x8000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Interrupt status for low threshold </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="48" column="9" bodyfile="include/veml7700.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="veml7700_8h_1ac184a3191a8f601842acb9d2dd0a18b7" prot="public" static="no">
+        <name>VEML7700_GAIN_2</name>
+        <initializer>0x01</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>ALS gain 2x </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="50" column="9" bodyfile="include/veml7700.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="veml7700_8h_1a6e4c26b22762f70e503c657b4ce22998" prot="public" static="no">
+        <name>VEML7700_GAIN_1</name>
+        <initializer>0x00</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>ALS gain 1x </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="51" column="9" bodyfile="include/veml7700.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="veml7700_8h_1afe932b46c50965ff1e0253ebb079eb83" prot="public" static="no">
+        <name>VEML7700_GAIN_1_8</name>
+        <initializer>0x02</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>ALS gain 1/8x </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="52" column="9" bodyfile="include/veml7700.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="veml7700_8h_1afdbd803e547967e481cae3819b466554" prot="public" static="no">
+        <name>VEML7700_GAIN_1_4</name>
+        <initializer>0x03</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>ALS gain 1/4x </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="53" column="9" bodyfile="include/veml7700.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="veml7700_8h_1abfa30d0bb21b039951b10d0164fcc082" prot="public" static="no">
+        <name>VEML7700_IT_800MS</name>
+        <initializer>0x03</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>ALS intetgration time 800ms </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="55" column="9" bodyfile="include/veml7700.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="veml7700_8h_1a0fbee5ee83e92c1665b0a1859f5d6021" prot="public" static="no">
+        <name>VEML7700_IT_400MS</name>
+        <initializer>0x02</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>ALS intetgration time 400ms </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="56" column="9" bodyfile="include/veml7700.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="veml7700_8h_1a8d3f5a63ff6e36f3488d19893c8d59dc" prot="public" static="no">
+        <name>VEML7700_IT_200MS</name>
+        <initializer>0x01</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>ALS intetgration time 200ms </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="57" column="9" bodyfile="include/veml7700.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="veml7700_8h_1a64cae02d634fac9a9136f25fad484bba" prot="public" static="no">
+        <name>VEML7700_IT_100MS</name>
+        <initializer>0x00</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>ALS intetgration time 100ms </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="58" column="9" bodyfile="include/veml7700.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="veml7700_8h_1a95ecbbf29a2e78d06a7ed34994bbde48" prot="public" static="no">
+        <name>VEML7700_IT_50MS</name>
+        <initializer>0x08</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>ALS intetgration time 50ms </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="59" column="9" bodyfile="include/veml7700.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="veml7700_8h_1a0b0e8dbb3ecdad03f11fef94d5241348" prot="public" static="no">
+        <name>VEML7700_IT_25MS</name>
+        <initializer>0x0C</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>ALS intetgration time 25ms </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="60" column="9" bodyfile="include/veml7700.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="veml7700_8h_1a9dbfff7bf67ada619a788dcc0a188416" prot="public" static="no">
+        <name>VEML7700_PERS_1</name>
+        <initializer>0x00</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>ALS irq persisance 1 sample </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="62" column="9" bodyfile="include/veml7700.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="veml7700_8h_1a491e4cc5d890ae7770538328fe97bf7c" prot="public" static="no">
+        <name>VEML7700_PERS_2</name>
+        <initializer>0x01</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>ALS irq persisance 2 samples </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="63" column="9" bodyfile="include/veml7700.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="veml7700_8h_1ae8dd15ca68e53e9587ad0577bbffdfc5" prot="public" static="no">
+        <name>VEML7700_PERS_4</name>
+        <initializer>0x02</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>ALS irq persisance 4 samples </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="64" column="9" bodyfile="include/veml7700.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="veml7700_8h_1aabeeb4338f6fb51812df3b8a69c4ad41" prot="public" static="no">
+        <name>VEML7700_PERS_8</name>
+        <initializer>0x03</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>ALS irq persisance 8 samples </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="65" column="9" bodyfile="include/veml7700.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="veml7700_8h_1ac9b6e93022aa0412844f5902e8fa98b7" prot="public" static="no">
+        <name>VEML7700_POWERSAVE_MODE1</name>
+        <initializer>0x00</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Power saving mode 1 </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="67" column="9" bodyfile="include/veml7700.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="veml7700_8h_1ac87e9079b731d240c33f3aacd2ea0f21" prot="public" static="no">
+        <name>VEML7700_POWERSAVE_MODE2</name>
+        <initializer>0x01</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Power saving mode 2 </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="68" column="9" bodyfile="include/veml7700.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="veml7700_8h_1aa3df1380896b46e4d4e89d307e522533" prot="public" static="no">
+        <name>VEML7700_POWERSAVE_MODE3</name>
+        <initializer>0x02</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Power saving mode 3 </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="69" column="9" bodyfile="include/veml7700.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="veml7700_8h_1a921c869e02d5eeb6bd9b5e07ba7359aa" prot="public" static="no">
+        <name>VEML7700_POWERSAVE_MODE4</name>
+        <initializer>0x03</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Power saving mode 4 </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="70" column="9" bodyfile="include/veml7700.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="veml7700_8h_1aaacc8ab1242b7a803625bbc82041f554" prot="public" static="no">
+        <name>VEML7700_GAIN_OPTIONS_COUNT</name>
+        <initializer>4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Possible gain values count </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="72" column="9" bodyfile="include/veml7700.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="veml7700_8h_1a4b87e0b1a2bd46241264c8f0cc471386" prot="public" static="no">
+        <name>VEML7700_IT_OPTIONS_COUNT</name>
+        <initializer>6</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Possible integration time values count </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="73" column="9" bodyfile="include/veml7700.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="veml7700_8h_1a31463374d3cacb98f1dc9eb17ec88a22" prot="public" static="no">
+        <name>LUX_FC_COEFFICIENT</name>
+        <initializer>0.092903</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Multiplier coefficient for lux-fc conversion </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="75" column="9" bodyfile="include/veml7700.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="veml7700_8h_1ad416a3f8fbd6e6c9738b38ffca0d5990" prot="public" static="no">
+        <name>FC_LUX_COEFFICIENT</name>
+        <initializer>10.7639</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Multiplier coefficient for fc-lux conversion </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="76" column="9" bodyfile="include/veml7700.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="veml7700_8h_1a3c7c6a69f690fc8d2abf0e385280a532" prot="public" static="no">
+        <name>ARRAY_SIZE</name>
+        <param><defname>arr</defname></param>
+        <initializer>(sizeof(arr) / sizeof((arr)[0]))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="78" column="9" bodyfile="include/veml7700.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="veml7700_8h_1ad400eadf67cc33f75d84069995f6bf10" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct veml7700_config</type>
+        <definition>static struct veml7700_config veml7700_get_default_config</definition>
+        <argsstring>()</argsstring>
+        <name>veml7700_get_default_config</name>
+        <briefdescription>
+<para>Get the default sensor configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Default values implemented are chosen per official recommendation.</para>
+</simplesect>
+<simplesect kind="return"><para>struct veml7700_config </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="104" column="29" declfile="include/veml7700.h" declline="104" declcolumn="29"/>
+      </memberdef>
+      <memberdef kind="function" id="veml7700_8h_1a16737dc82066e3de17d785c6db4ec84c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>esp_err_t</type>
+        <definition>static esp_err_t veml7700_optimize_configuration</definition>
+        <argsstring>(uint32_t *lux)</argsstring>
+        <name>veml7700_optimize_configuration</name>
+        <param>
+          <type>uint32_t *</type>
+          <declname>lux</declname>
+        </param>
+        <briefdescription>
+<para>Auto-resolution adjustment algorithm implementation for VEML7700 light sensor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Does not match official recommended algorithm.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lux</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Luminocity value for which we are optimizing.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>esp_err_t </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="116" column="18" declfile="include/veml7700.h" declline="116" declcolumn="18"/>
+      </memberdef>
+      <memberdef kind="function" id="veml7700_8h_1a18e13fb7ee2cf3f3c64756d8aebe8f33" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>static uint32_t veml7700_get_current_maximum_lux</definition>
+        <argsstring>()</argsstring>
+        <name>veml7700_get_current_maximum_lux</name>
+        <briefdescription>
+<para>Read the maximum lux for the currentl configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>uint32_t The maximum lux value. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="123" column="17" declfile="include/veml7700.h" declline="123" declcolumn="17"/>
+      </memberdef>
+      <memberdef kind="function" id="veml7700_8h_1a48858199843918437ebce13905843347" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>static uint32_t veml7700_get_lower_maximum_lux</definition>
+        <argsstring>(uint32_t *lux)</argsstring>
+        <name>veml7700_get_lower_maximum_lux</name>
+        <param>
+          <type>uint32_t *</type>
+          <declname>lux</declname>
+        </param>
+        <briefdescription>
+<para>Get the next smallest maximum lux limit value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Used to identify if a better range is possible for the current light levels.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lux</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The referent lux value, usually the last result.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>uint32_t The next smallest maximum lux value. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="135" column="17" declfile="include/veml7700.h" declline="135" declcolumn="17"/>
+      </memberdef>
+      <memberdef kind="function" id="veml7700_8h_1a9b643a6a567ec96c5bb8e74c82b2af8f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>static uint32_t veml7700_get_lowest_maximum_lux</definition>
+        <argsstring>()</argsstring>
+        <name>veml7700_get_lowest_maximum_lux</name>
+        <briefdescription>
+<para>Get the smallest possible maximum lux value for this sensor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>uint32_t The smallest maximum lux value. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="142" column="17" declfile="include/veml7700.h" declline="142" declcolumn="17"/>
+      </memberdef>
+      <memberdef kind="function" id="veml7700_8h_1ae66ee05d266a24261da9c02c794caead" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>static uint32_t veml7700_get_maximum_lux</definition>
+        <argsstring>()</argsstring>
+        <name>veml7700_get_maximum_lux</name>
+        <briefdescription>
+<para>The maximum possible lux value for any configuration on this sensor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>uint32_t The maximum lux value. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="150" column="17" declfile="include/veml7700.h" declline="150" declcolumn="17"/>
+      </memberdef>
+      <memberdef kind="function" id="veml7700_8h_1ab905c123f65676c3b1efd273d23b1750" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>static int veml7700_get_gain_index</definition>
+        <argsstring>(uint8_t gain)</argsstring>
+        <name>veml7700_get_gain_index</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>gain</declname>
+        </param>
+        <briefdescription>
+<para>Get the index of the gain value within the list of possible gain values. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>gain</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The gain value to search for.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int The index within the array of possible gains. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="160" column="12" declfile="include/veml7700.h" declline="160" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="veml7700_8h_1a81419e13bed38fc7070f5a251a7db9dd" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>static int veml7700_get_it_index</definition>
+        <argsstring>(uint8_t integration_time)</argsstring>
+        <name>veml7700_get_it_index</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>integration_time</declname>
+        </param>
+        <briefdescription>
+<para>Get the index of the gain value within the list of possible integration time values. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>gain</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The integration time value to search for.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int The index within the array of possible integration times. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="170" column="12" declfile="include/veml7700.h" declline="170" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="veml7700_8h_1a56ee4bded4ba9fa0d9006a2ffdefed1d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>static uint8_t indexOf</definition>
+        <argsstring>(uint8_t elm, uint8_t *ar, uint8_t len)</argsstring>
+        <name>indexOf</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>elm</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>ar</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+<para>Find the index of a given element within an array. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This is a standard implementation of a commonly used function which can be found online.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>elm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value of the element we are searching for </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ar</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The array in which to search </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Length of the given array</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>uint8_t<itemizedlist>
+<listitem><para>n Index within the array</para>
+</listitem><listitem><para>-1 Element not found. </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="186" column="16" declfile="include/veml7700.h" declline="186" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="veml7700_8h_1a813978c0caeffa83defe2b2a52e1aae0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void decrease_resolution</definition>
+        <argsstring>()</argsstring>
+        <name>decrease_resolution</name>
+        <briefdescription>
+<para>Decrease either gain and/or integration time in configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Does not match official recommended algorithm.</para>
+</simplesect>
+<simplesect kind="return"><para>void </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="195" column="13" declfile="include/veml7700.h" declline="195" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="veml7700_8h_1a42fc73db0302ac0e413c40615c25150e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void increase_resolution</definition>
+        <argsstring>()</argsstring>
+        <name>increase_resolution</name>
+        <briefdescription>
+<para>Increase either gain and/or integration time in configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Does not match official recommended algorithm.</para>
+</simplesect>
+<simplesect kind="return"><para>void </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="204" column="13" declfile="include/veml7700.h" declline="204" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="veml7700_8h_1acaa959a6aa51eb149c1cfcf5dc8fca0d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>esp_err_t</type>
+        <definition>static esp_err_t veml7700_i2c_read</definition>
+        <argsstring>(uint8_t *dev_addr, uint8_t reg_addr, uint16_t *reg_data, uint8_t len)</argsstring>
+        <name>veml7700_i2c_read</name>
+        <param>
+          <type>uint8_t *</type>
+          <declname>dev_addr</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>reg_addr</declname>
+        </param>
+        <param>
+          <type>uint16_t *</type>
+          <declname>reg_data</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+<para>I2C read protocol implementation for VEML7700 IC. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Implementation as per official specification by Vishay found on page 6 of the <ulink url="https://www.vishay.com/docs/84286/veml7700.pdf">VEML7700 Datasheet</ulink>, rev. 1.5</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dev_addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The address of the I2C slave device </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>reg_addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The register address from which to read </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>reg_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The data read from the desired register </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Length of data to be read in bytes</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>esp_err_t </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="219" column="18" declfile="include/veml7700.h" declline="219" declcolumn="18"/>
+      </memberdef>
+      <memberdef kind="function" id="veml7700_8h_1a00c38e2f25dd622c479b72163ce69a2a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>esp_err_t</type>
+        <definition>static esp_err_t veml7700_i2c_write</definition>
+        <argsstring>(uint8_t *dev_addr, uint8_t reg_addr, uint16_t *reg_data, uint8_t len)</argsstring>
+        <name>veml7700_i2c_write</name>
+        <param>
+          <type>uint8_t *</type>
+          <declname>dev_addr</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>reg_addr</declname>
+        </param>
+        <param>
+          <type>uint16_t *</type>
+          <declname>reg_data</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+<para>I2C write protocol implementation for VEML7700 IC. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Implementation as per official specification by Vishay found on page 6 of the <ulink url="https://www.vishay.com/docs/84286/veml7700.pdf">VEML7700 Datasheet</ulink>, rev. 1.5</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dev_addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The address of the I2C slave device </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>reg_addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The register address to which to write </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>reg_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The data to be written </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Length of data to be written in bytes</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>esp_err_t </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="234" column="18" declfile="include/veml7700.h" declline="234" declcolumn="18"/>
+      </memberdef>
+      <memberdef kind="function" id="veml7700_8h_1acd7f14437eea0cb06fc3b6ddff16622d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>esp_err_t</type>
+        <definition>esp_err_t veml7700_initialize</definition>
+        <argsstring>()</argsstring>
+        <name>veml7700_initialize</name>
+        <briefdescription>
+<para>Initialize the sensor by configuring it with default settings. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="attention"><para>This function should be called only once and before any other functions from this group.</para>
+</simplesect>
+<simplesect kind="return"><para>esp_err_t </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="244" column="11" declfile="include/veml7700.h" declline="244" declcolumn="11"/>
+      </memberdef>
+      <memberdef kind="function" id="veml7700_8h_1a3dd02ee334d1f454447cc9e6c0a959ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>esp_err_t</type>
+        <definition>esp_err_t veml7700_set_config</definition>
+        <argsstring>(struct veml7700_config *configuration)</argsstring>
+        <name>veml7700_set_config</name>
+        <param>
+          <type>struct veml7700_config *</type>
+          <declname>configuration</declname>
+        </param>
+        <briefdescription>
+<para>Write the sensor configuration to the device. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>configuration</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The configuration to be written.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>esp_err_t </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="253" column="11" declfile="include/veml7700.h" declline="253" declcolumn="11"/>
+      </memberdef>
+      <memberdef kind="function" id="veml7700_8h_1aa7e8c81e2ff77014fe623839a2b01372" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>esp_err_t</type>
+        <definition>esp_err_t veml7700_read_als_lux</definition>
+        <argsstring>(double *lux)</argsstring>
+        <name>veml7700_read_als_lux</name>
+        <param>
+          <type>double *</type>
+          <declname>lux</declname>
+        </param>
+        <briefdescription>
+<para>Read the ALS data once. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lux</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ALS read result in lux.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>esp_err_t </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="262" column="11" declfile="include/veml7700.h" declline="262" declcolumn="11"/>
+      </memberdef>
+      <memberdef kind="function" id="veml7700_8h_1ac67912a4aca61b9e2e8ea8d170dd2995" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>esp_err_t</type>
+        <definition>esp_err_t veml7700_read_als_lux_auto</definition>
+        <argsstring>(double *lux)</argsstring>
+        <name>veml7700_read_als_lux_auto</name>
+        <param>
+          <type>double *</type>
+          <declname>lux</declname>
+        </param>
+        <briefdescription>
+<para>Read the ALS data once. Optimize resolution if neccessary. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="attention"><para>This function alters the sensor configuration as it sees fit.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lux</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ALS read result in lux.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>esp_err_t </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="273" column="11" declfile="include/veml7700.h" declline="273" declcolumn="11"/>
+      </memberdef>
+      <memberdef kind="function" id="veml7700_8h_1a01feb81a2828fd0fd02a8e25c70b02c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>esp_err_t</type>
+        <definition>esp_err_t veml7700_read_white_lux</definition>
+        <argsstring>(double *lux)</argsstring>
+        <name>veml7700_read_white_lux</name>
+        <param>
+          <type>double *</type>
+          <declname>lux</declname>
+        </param>
+        <briefdescription>
+<para>Read the White light data once. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lux</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The White light read result in lux.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>esp_err_t </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="282" column="11" declfile="include/veml7700.h" declline="282" declcolumn="11"/>
+      </memberdef>
+      <memberdef kind="function" id="veml7700_8h_1abfea9821bd5f97767b96c33b947a2199" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>esp_err_t</type>
+        <definition>esp_err_t veml7700_read_white_lux_auto</definition>
+        <argsstring>(double *lux)</argsstring>
+        <name>veml7700_read_white_lux_auto</name>
+        <param>
+          <type>double *</type>
+          <declname>lux</declname>
+        </param>
+        <briefdescription>
+<para>Read the White light data once. Optimize resolution if neccessary. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="attention"><para>This function alters the sensor configuration as it sees fit.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lux</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The White light read result in lux.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>esp_err_t </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="293" column="11" declfile="include/veml7700.h" declline="293" declcolumn="11"/>
+      </memberdef>
+      <memberdef kind="function" id="veml7700_8h_1ad9e457c802223e2bcf157527505f8d35" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float veml7700_get_resolution</definition>
+        <argsstring>()</argsstring>
+        <name>veml7700_get_resolution</name>
+        <briefdescription>
+<para>Read the currently configured and used sensor resolution. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>float The resolution value. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="300" column="7" declfile="include/veml7700.h" declline="300" declcolumn="7"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Vishay VEML7700 Light Sensor driver for integration with ESP-IDF framework. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Kristijan Grozdanovski (<ulink url="mailto:kgrozdanovski7@gmail.com">kgrozdanovski7@gmail.com</ulink>)</para>
+</simplesect>
+<simplesect kind="version"><para>1</para>
+</simplesect>
+<simplesect kind="date"><para>2021-12-11</para>
+</simplesect>
+<simplesect kind="copyright"><para>Copyright (c) 2021, Kristijan Grozdanovski All rights reserved.</para>
+</simplesect>
+This source code is licensed under the BSD-style license found in the LICENSE file in the root directory of this source tree. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;math.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;esp_log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;driver/i2c.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>I2C_MASTER_NUM</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="veml7700_8h_1aab9e642b6200f95fcbd2ad7466aaa2d3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>I2C_MASTER_NUM<sp/>I2C_NUM_0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="veml7700_8h_1aa7ff19f185342932575a429301c14f17" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VEML7700_I2C_ADDR<sp/>UINT8_C(0x10)<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="veml7700_8h_1ad174f7b591b471e18517498892a3620c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VEML7700_ALS_CONFIG<sp/>0x00<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="veml7700_8h_1a09c6086c36bdbd61abe4d2902acb8f69" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VEML7700_ALS_THREHOLD_HIGH<sp/>0x01<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="veml7700_8h_1a2dba95a2e1380568bd74b34b3e3ae6fa" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VEML7700_ALS_THREHOLD_LOW<sp/>0x02<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="veml7700_8h_1a65e19d018fbbb9bbe7f6009e5be8a14e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VEML7700_ALS_POWER_SAVE<sp/>0x03<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="veml7700_8h_1af23db981b342738481bfb31372857826" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VEML7700_ALS_DATA<sp/>0x04<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="veml7700_8h_1aabab10b5708dc515d55e846c30b859c8" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VEML7700_WHITE_DATA<sp/>0x05<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="veml7700_8h_1aecee9475702285f6f3bce591cfc9b880" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VEML7700_INTERRUPTSTATUS<sp/>0x06<sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="veml7700_8h_1a677872f600cd5d6e2741a68ea2d4718c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VEML7700_INTERRUPT_HIGH<sp/>0x4000<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="veml7700_8h_1aed79b7101d08af406f75a4c19f7d806a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VEML7700_INTERRUPT_LOW<sp/>0x8000<sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="veml7700_8h_1ac184a3191a8f601842acb9d2dd0a18b7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VEML7700_GAIN_2<sp/>0x01<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="veml7700_8h_1a6e4c26b22762f70e503c657b4ce22998" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VEML7700_GAIN_1<sp/>0x00<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="veml7700_8h_1afe932b46c50965ff1e0253ebb079eb83" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VEML7700_GAIN_1_8<sp/>0x02<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="veml7700_8h_1afdbd803e547967e481cae3819b466554" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VEML7700_GAIN_1_4<sp/>0x03<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="veml7700_8h_1abfa30d0bb21b039951b10d0164fcc082" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VEML7700_IT_800MS<sp/>0x03<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="veml7700_8h_1a0fbee5ee83e92c1665b0a1859f5d6021" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VEML7700_IT_400MS<sp/>0x02<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="veml7700_8h_1a8d3f5a63ff6e36f3488d19893c8d59dc" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VEML7700_IT_200MS<sp/>0x01<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="veml7700_8h_1a64cae02d634fac9a9136f25fad484bba" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VEML7700_IT_100MS<sp/>0x00<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="veml7700_8h_1a95ecbbf29a2e78d06a7ed34994bbde48" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VEML7700_IT_50MS<sp/>0x08<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="veml7700_8h_1a0b0e8dbb3ecdad03f11fef94d5241348" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VEML7700_IT_25MS<sp/>0x0C<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="veml7700_8h_1a9dbfff7bf67ada619a788dcc0a188416" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VEML7700_PERS_1<sp/>0x00<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="veml7700_8h_1a491e4cc5d890ae7770538328fe97bf7c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VEML7700_PERS_2<sp/>0x01<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="veml7700_8h_1ae8dd15ca68e53e9587ad0577bbffdfc5" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VEML7700_PERS_4<sp/>0x02<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="veml7700_8h_1aabeeb4338f6fb51812df3b8a69c4ad41" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VEML7700_PERS_8<sp/>0x03<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="veml7700_8h_1ac9b6e93022aa0412844f5902e8fa98b7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VEML7700_POWERSAVE_MODE1<sp/>0x00<sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="veml7700_8h_1ac87e9079b731d240c33f3aacd2ea0f21" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VEML7700_POWERSAVE_MODE2<sp/>0x01<sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="veml7700_8h_1aa3df1380896b46e4d4e89d307e522533" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VEML7700_POWERSAVE_MODE3<sp/>0x02<sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="veml7700_8h_1a921c869e02d5eeb6bd9b5e07ba7359aa" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VEML7700_POWERSAVE_MODE4<sp/>0x03<sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="veml7700_8h_1aaacc8ab1242b7a803625bbc82041f554" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VEML7700_GAIN_OPTIONS_COUNT<sp/>4<sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73" refid="veml7700_8h_1a4b87e0b1a2bd46241264c8f0cc471386" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VEML7700_IT_OPTIONS_COUNT<sp/>6<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="veml7700_8h_1a31463374d3cacb98f1dc9eb17ec88a22" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LUX_FC_COEFFICIENT<sp/>0.092903<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="veml7700_8h_1ad416a3f8fbd6e6c9738b38ffca0d5990" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FC_LUX_COEFFICIENT<sp/>10.7639<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ARRAY_SIZE(arr)<sp/>(sizeof(arr)<sp/>/<sp/>sizeof((arr)[0]))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">veml7700_config<sp/>{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>gain;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>integration_time;<sp/><sp/></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>persistance;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>interrupt_enable;<sp/><sp/></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>shutdown;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>resolution;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>maximum_lux;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="95"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">veml7700_config<sp/>veml7700_get_default_config();</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>esp_err_t<sp/>veml7700_optimize_configuration(uint32_t<sp/>*lux);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint32_t<sp/>veml7700_get_current_maximum_lux();</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint32_t<sp/>veml7700_get_lower_maximum_lux(uint32_t*<sp/>lux);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint32_t<sp/>veml7700_get_lowest_maximum_lux();</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint32_t<sp/>veml7700_get_maximum_lux();</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>veml7700_get_gain_index(uint8_t<sp/>gain);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>veml7700_get_it_index(uint8_t<sp/>integration_time);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint8_t<sp/>indexOf(uint8_t<sp/>elm,<sp/>uint8_t<sp/>*ar,<sp/>uint8_t<sp/>len);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>decrease_resolution();</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>increase_resolution();</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>esp_err_t<sp/>veml7700_i2c_read(uint8_t<sp/>*dev_addr,<sp/>uint8_t<sp/>reg_addr,<sp/>uint16_t<sp/>*reg_data,<sp/>uint8_t<sp/>len);</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>esp_err_t<sp/>veml7700_i2c_write(uint8_t<sp/>*dev_addr,<sp/>uint8_t<sp/>reg_addr,<sp/>uint16_t<sp/>*reg_data,<sp/>uint8_t<sp/>len);</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="244" refid="veml7700_8h_1acd7f14437eea0cb06fc3b6ddff16622d" refkind="member"><highlight class="normal">esp_err_t<sp/><ref refid="veml7700_8h_1acd7f14437eea0cb06fc3b6ddff16622d" kindref="member">veml7700_initialize</ref>();</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"></highlight></codeline>
+<codeline lineno="253" refid="veml7700_8h_1a3dd02ee334d1f454447cc9e6c0a959ac" refkind="member"><highlight class="normal">esp_err_t<sp/><ref refid="veml7700_8h_1a3dd02ee334d1f454447cc9e6c0a959ac" kindref="member">veml7700_set_config</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>veml7700_config<sp/>*configuration);</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight></codeline>
+<codeline lineno="262" refid="veml7700_8h_1aa7e8c81e2ff77014fe623839a2b01372" refkind="member"><highlight class="normal">esp_err_t<sp/><ref refid="veml7700_8h_1aa7e8c81e2ff77014fe623839a2b01372" kindref="member">veml7700_read_als_lux</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/>lux);</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight></codeline>
+<codeline lineno="273" refid="veml7700_8h_1ac67912a4aca61b9e2e8ea8d170dd2995" refkind="member"><highlight class="normal">esp_err_t<sp/><ref refid="veml7700_8h_1ac67912a4aca61b9e2e8ea8d170dd2995" kindref="member">veml7700_read_als_lux_auto</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/>lux);</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight></codeline>
+<codeline lineno="282" refid="veml7700_8h_1a01feb81a2828fd0fd02a8e25c70b02c7" refkind="member"><highlight class="normal">esp_err_t<sp/><ref refid="veml7700_8h_1a01feb81a2828fd0fd02a8e25c70b02c7" kindref="member">veml7700_read_white_lux</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/>lux);</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"></highlight></codeline>
+<codeline lineno="293" refid="veml7700_8h_1abfea9821bd5f97767b96c33b947a2199" refkind="member"><highlight class="normal">esp_err_t<sp/><ref refid="veml7700_8h_1abfea9821bd5f97767b96c33b947a2199" kindref="member">veml7700_read_white_lux_auto</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/>lux);</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight></codeline>
+<codeline lineno="300" refid="veml7700_8h_1ad9e457c802223e2bcf157527505f8d35" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="veml7700_8h_1ad9e457c802223e2bcf157527505f8d35" kindref="member">veml7700_get_resolution</ref>();</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight></codeline>
+<codeline lineno="302"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="303"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="include/veml7700.h"/>
+  </compounddef>
+</doxygen>
