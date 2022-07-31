@@ -429,7 +429,7 @@ static esp_err_t veml7700_i2c_read_reg(veml7700_handle_t dev, uint8_t reg_addr, 
 
 	espRc = i2c_master_cmd_begin(dev->i2c_master_num, cmd, 2000 / portTICK_PERIOD_MS);
 
-	*reg_data=read_data[0]|(read_data[1]<<8);
+	*reg_data = read_data[0] | (read_data[1]<<8);
 	i2c_cmd_link_delete(cmd);
 
 	return espRc;
@@ -457,8 +457,8 @@ static esp_err_t veml7700_i2c_write_reg(veml7700_handle_t dev, uint8_t reg_addr,
 	i2c_master_write_byte(cmd, reg_addr, false);
 
 	uint8_t write_data[2];
-	write_data[0]=reg_data&0xff;
-	write_data[1]=(reg_data>>8)&0xff;
+	write_data[0] = reg_data&0xff;
+	write_data[1] = (reg_data>>8)&0xff;
 	i2c_master_write(cmd, write_data, 2, false);
 	
 	i2c_master_stop(cmd);
@@ -470,22 +470,21 @@ static esp_err_t veml7700_i2c_write_reg(veml7700_handle_t dev, uint8_t reg_addr,
 	return espRc;
 }
 
-
 esp_err_t veml7700_initialize(veml7700_handle_t *dev, int i2c_master_num)
 {
-	veml7700_privdata_t *rdev=calloc(sizeof(veml7700_privdata_t), 1);
+	veml7700_privdata_t *rdev=  calloc(sizeof(veml7700_privdata_t), 1);
 	if (rdev==NULL) return ESP_ERR_NO_MEM;
 	// Define the sensor configuration globally
 	rdev->configuration = veml7700_get_default_config();
 	rdev->i2c_master_num = i2c_master_num;
-	rdev->addr = veml7700_device_address;
+	rdev->addr = VEML7700_I2C_ADDR;
 
-	*dev=rdev;
+	*dev = rdev;
 	return veml7700_send_config(rdev);
 }
 
 void veml7700_release(veml7700_handle_t dev) {
-	//Nothing special to do with the device; simply free the handle memory.
+	// Nothing special to do with the device, simply free the handle memory
 	free(dev);
 }
 
@@ -513,7 +512,7 @@ static esp_err_t veml7700_send_config(veml7700_handle_t dev)
 
 esp_err_t veml7700_set_config(veml7700_handle_t dev, struct veml7700_config *configuration)
 {
-	dev->configuration=*configuration;
+	dev->configuration = *configuration;
 	return veml7700_send_config(dev);
 }
 
@@ -525,7 +524,7 @@ esp_err_t veml7700_read_als_lux(veml7700_handle_t dev, double* lux)
 	i2c_result = veml7700_i2c_read_reg(dev, VEML7700_ALS_DATA, &reg_data);
 	if (i2c_result != 0) {
 		ESP_LOGW(VEML7700_TAG, "veml7700_i2c_read() returned %d", i2c_result);
-		return i2c_result;;
+		return i2c_result;
 	}
 
 	*lux = reg_data * dev->configuration.resolution;
