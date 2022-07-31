@@ -23,6 +23,7 @@
 extern "C" {
 #endif
 
+#define VEML7700_I2C_ADDR UINT8_C(0x10) /*!< Sensor slave I2C address */
 #define LUX_FC_COEFFICIENT 0.092903     /*!< Multiplier coefficient for lux-fc conversion */
 #define FC_LUX_COEFFICIENT 10.7639      /*!< Multiplier coefficient for fc-lux conversion */
 
