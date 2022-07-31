@@ -56,6 +56,7 @@ typedef struct veml7700_privdata_t *veml7700_handle_t;
  * functions from this group.
  *
  * @param dev Pointer to a variable holding the device handle
+ * @param i2c_master_num I2C port used by the master device
  * 
  * @return esp_err_t 
  */
