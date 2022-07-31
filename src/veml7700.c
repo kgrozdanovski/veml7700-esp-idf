@@ -194,21 +194,19 @@ static struct veml7700_config veml7700_get_default_config()
  */
 static esp_err_t veml7700_optimize_configuration(veml7700_handle_t dev, double *lux)
 {
-	// Make sure this isn't the smallest maximum
-	if (dev->configuration.maximum_lux == veml7700_get_lowest_maximum_lux(dev)) {
-		ESP_LOGD(VEML7700_TAG, "Already configured with maximum resolution.");
-		return ESP_FAIL;
-	}
-	if (dev->configuration.maximum_lux == veml7700_get_maximum_lux(dev)) {
-		ESP_LOGD(VEML7700_TAG, "Already configured for maximum luminocity.");
-		return ESP_FAIL;
-	}
-
-	if (ceil(*lux) >= veml7700_get_current_maximum_lux(dev)) {
-		// Decrease resolution
+	if (ceil(*lux) >= veml7700_get_current_maximum_lux(dev)) {	// Decrease resolution
+		// Make sure we haven't reached the upper luminocity limit
+		if (dev->configuration.maximum_lux == veml7700_get_maximum_lux(dev)) {
+			ESP_LOGD(VEML7700_TAG, "Already configured for maximum luminocity.");
+			return ESP_FAIL;
+		}
 		decrease_resolution(dev);
-	} else if (*lux < veml7700_get_lower_maximum_lux(dev, lux)) {
-		// Increase resolution
+	} else if (*lux < veml7700_get_lower_maximum_lux(dev, lux)) {	// Increase resolution
+		// Make sure this isn't the smallest maximum
+		if (dev->configuration.maximum_lux == veml7700_get_lowest_maximum_lux(dev)) {
+			ESP_LOGD(VEML7700_TAG, "Already configured with maximum resolution.");
+			return ESP_FAIL;
+		}
 		increase_resolution(dev);
 	} else {
 		ESP_LOGD(VEML7700_TAG, "Configuration already optimal.");
@@ -470,10 +468,11 @@ static esp_err_t veml7700_i2c_write_reg(veml7700_handle_t dev, uint8_t reg_addr,
 	return espRc;
 }
 
+
 esp_err_t veml7700_initialize(veml7700_handle_t *dev, int i2c_master_num)
 {
-	veml7700_privdata_t *rdev=  calloc(sizeof(veml7700_privdata_t), 1);
-	if (rdev==NULL) return ESP_ERR_NO_MEM;
+	veml7700_privdata_t *rdev = calloc(sizeof(veml7700_privdata_t), 1);
+	if (rdev == NULL) return ESP_ERR_NO_MEM;
 	// Define the sensor configuration globally
 	rdev->configuration = veml7700_get_default_config();
 	rdev->i2c_master_num = i2c_master_num;
