@@ -535,7 +535,7 @@ esp_err_t veml7700_read_als_lux_auto(veml7700_handle_t dev, double* lux)
 {
 	veml7700_read_als_lux(dev, lux);
 
-	ESP_LOGD(VEML7700_TAG, "Configured maximum luminocity: %d\n", dev->configuration.maximum_lux);
+	ESP_LOGD(VEML7700_TAG, "Configured maximum luminocity: %ld\n", dev->configuration.maximum_lux);
 	ESP_LOGD(VEML7700_TAG, "Configured resolution: %0.4f\n", dev->configuration.resolution);
 	
 	// Calculate and automatically reconfigure the optimal sensor configuration
@@ -568,7 +568,7 @@ esp_err_t veml7700_read_white_lux_auto(veml7700_handle_t dev, double* lux)
 {
 	veml7700_read_white_lux(dev, lux);
 
-	ESP_LOGD(VEML7700_TAG, "Configured maximum luminocity: %d\n", dev->configuration.maximum_lux);
+	ESP_LOGD(VEML7700_TAG, "Configured maximum luminocity: %ld\n", dev->configuration.maximum_lux);
 	ESP_LOGD(VEML7700_TAG, "Configured resolution: %0.4f\n", dev->configuration.resolution);
 	
 	// Calculate and automatically reconfigure the optimal sensor configuration
