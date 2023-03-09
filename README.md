@@ -1,4 +1,5 @@
 # _VEML7700 Light Sensor driver for ESP-IDF_
+[![CodeFactor](https://www.codefactor.io/repository/github/kgrozdanovski/veml7700-esp-idf/badge)](https://www.codefactor.io/repository/github/kgrozdanovski/veml7700-esp-idf)
 
 ## Overview
 
