@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="structveml7700__config" kind="struct" language="C++" prot="public">
+    <compoundname>veml7700_config</compoundname>
+    <includes refid="veml7700_8h" local="no">veml7700.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structveml7700__config_1a7c07aa50dffd011a3b181ea4ecb54f8e" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t gain</definition>
+        <argsstring></argsstring>
+        <name>gain</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sensor gain configuration </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="88" column="10" bodyfile="include/veml7700.h" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structveml7700__config_1a96980ba333fab92cd7644b36ba95bfc5" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t integration_time</definition>
+        <argsstring></argsstring>
+        <name>integration_time</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sensor integration time configuration </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="89" column="10" bodyfile="include/veml7700.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structveml7700__config_1ade521af18b6daf0783d172e348876753" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t persistance</definition>
+        <argsstring></argsstring>
+        <name>persistance</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Last result persistance on-sensor configuration </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="90" column="10" bodyfile="include/veml7700.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structveml7700__config_1ae5422d6fe417319922c8a8c25d325507" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t interrupt_enable</definition>
+        <argsstring></argsstring>
+        <name>interrupt_enable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Enable/disable interrupts </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="91" column="10" bodyfile="include/veml7700.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structveml7700__config_1af355136099f500479162401479398690" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t shutdown</definition>
+        <argsstring></argsstring>
+        <name>shutdown</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Shutdown command configuration </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="92" column="10" bodyfile="include/veml7700.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structveml7700__config_1a4333d786c60465d20826583358b2798d" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float resolution</definition>
+        <argsstring></argsstring>
+        <name>resolution</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Current resolution and multiplier </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="93" column="11" bodyfile="include/veml7700.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structveml7700__config_1aa04a43ff88e33e1e4bad5687020db81c" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t maximum_lux</definition>
+        <argsstring></argsstring>
+        <name>maximum_lux</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Current maximum lux limit </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/veml7700.h" line="94" column="14" bodyfile="include/veml7700.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents sensor and I2C device configuration. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="note"><para>Can contain calculated values for active settings such as &apos;resolution&apos; and &apos;maximum lux&apos;. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="include/veml7700.h" line="87" column="8" bodyfile="include/veml7700.h" bodystart="87" bodyend="95"/>
+    <listofallmembers>
+      <member refid="structveml7700__config_1a7c07aa50dffd011a3b181ea4ecb54f8e" prot="public" virt="non-virtual"><scope>veml7700_config</scope><name>gain</name></member>
+      <member refid="structveml7700__config_1a96980ba333fab92cd7644b36ba95bfc5" prot="public" virt="non-virtual"><scope>veml7700_config</scope><name>integration_time</name></member>
+      <member refid="structveml7700__config_1ae5422d6fe417319922c8a8c25d325507" prot="public" virt="non-virtual"><scope>veml7700_config</scope><name>interrupt_enable</name></member>
+      <member refid="structveml7700__config_1aa04a43ff88e33e1e4bad5687020db81c" prot="public" virt="non-virtual"><scope>veml7700_config</scope><name>maximum_lux</name></member>
+      <member refid="structveml7700__config_1ade521af18b6daf0783d172e348876753" prot="public" virt="non-virtual"><scope>veml7700_config</scope><name>persistance</name></member>
+      <member refid="structveml7700__config_1a4333d786c60465d20826583358b2798d" prot="public" virt="non-virtual"><scope>veml7700_config</scope><name>resolution</name></member>
+      <member refid="structveml7700__config_1af355136099f500479162401479398690" prot="public" virt="non-virtual"><scope>veml7700_config</scope><name>shutdown</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
